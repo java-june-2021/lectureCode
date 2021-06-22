@@ -1,0 +1,47 @@
+
+1) Animal Attack
+    - Getting 2 Objects to attack and target each other
+2) Inheritance
+    -Create a normal Mammal object
+    -Create a second Gorilla object that inherits from Mammal
+    -How does constructing a Gorilla look like in the main method
+    -Can we throw both Mammal and Gorilla in an ArrayList
+    -Can gorilla access all Mammal attributes without getts&settrs? Why?
+3) Protected Access Modifiers
+    -Only work with Inheritance
+4) Bringing back Animal fight
+    -Donkey Kong doesn't just attack Mammals, attacks reptiles and barrels too
+    -Create Barrel class --- How can we attack it?
+5) Interfaces
+    -The Interface creates a class link between objects without inheritance.
+    -So long as they have methods whose signatures are in the Interface they will be linked
+    -Instead of attacking Mammals --- attack Attackable taget. 
+    -We can also predict what methods we can use from those targets, because the signatures are in Interface
+
+    -Interfaces are a CONTRACT. If you're gonna implement, you have to abide by all the terms of the contract,
+    and define all the Method Signatures present in the Contract. 
+
+6) Method Override
+    -Child class can Override the Parent Class method
+    -Redefine the Method in the Child class and this will Override what it does when used by Child class
+    -It used to be that the parent would take precedence, no matter what, you would Override that with a decorator
+7) Decorators
+    -These are shorthands for often-repeated code
+    -@Override is one, that will Override what one class defines over another, however, this is outdated in terms
+    of inheritance because what the child says, goes. Else, we don't have to touch the method and we get all
+    that from the parent class.
+
+8)Abstract
+    -Brainstorm: When we have a mammal --- What are things that all living creatures do? 
+    -Abstract classes are a class that cannot be instantiated. 
+    -They are the BOOK OF RULES that defines what classes who inherit it should look like.
+    -It is like the Mammal Class, except we can only inherit from it we cannot create an Instance of it.
+    -It can also create abstract methods, like an Interface, which are contractual to all who extend the class.
+
+9) Takeaways
+    -Interface helps when writing functions of Objects targeting Objects -- instead of being limited to one type
+    -Interface allows to give a blanket contract so that different Object types can be targeted or affected
+
+    -Abstract classes are like the ultimate Parent class. We cannot create instances.
+    -However, we can inherit them. Like Interfaces: any abstract methods will force those methods to be defined
+    by the child class, however the child sees fit. 
