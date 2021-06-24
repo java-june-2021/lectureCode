@@ -6,6 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Hello World</title>
+<script src="/js/script.js"></script>
 </head>
 <body>
 <p> Lets hear a joke!  </p>
@@ -20,4 +21,5 @@
 
 </form>
 </body>
+
 </html>

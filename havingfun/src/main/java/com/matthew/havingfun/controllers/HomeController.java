@@ -23,7 +23,7 @@ public class HomeController {
 		return "joke.jsp";
 	}
 	
-	@RequestMapping(value="/favcolor/{color}")
+	@RequestMapping(value="/favcolor/{color}", method=RequestMethod.GET)
 	public String color(Model viewModel, @PathVariable("color") String favcolor) {
 		viewModel.addAttribute("favcolor", favcolor);
 		return "favcolor.jsp";

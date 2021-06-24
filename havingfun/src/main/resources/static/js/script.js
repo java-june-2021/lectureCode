@@ -1,0 +1,1 @@
+alert("You've come to this page");
