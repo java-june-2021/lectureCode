@@ -18,6 +18,8 @@ public class GoldController {
 //	@RequestMapping(value"/", method=RequestMethod.GET)
 //	@RequestMapping(value"/", method=RequestMethod.POST)
 	
+	
+
 	@GetMapping("/")
 	public String index(HttpSession session, Model viewModel) {
 		ArrayList<String> activityList = new ArrayList<String>();
@@ -29,6 +31,8 @@ public class GoldController {
 		}
 		viewModel.addAttribute("totalGold", session.getAttribute("gold"));
 		viewModel.addAttribute("activity", session.getAttribute("activity"));
+
+		
 		return "gold.jsp";
 	}
 	
