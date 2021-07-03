@@ -36,8 +36,7 @@ public class AlbumService {
 	}
 	
 	// Delete
-	public String deleteAlbum(Long id) {
+	public void deleteAlbum(Long id) {
 		this.aRepo.deleteById(id);
-		return "Album " + id + " has been deleted.";
 	}
 }
