@@ -12,7 +12,7 @@
 <div class="container">
 <h1>Welcome To The Best Album Database</h1>
 <hr>
-<a href="/new">Add a New Album</a>
+<a href="/new">Add a New Album</a> | <a href="/song/new">Add Song To Album</a>
 <table class="table table-dark">
 <thead>
 <tr>

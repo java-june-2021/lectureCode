@@ -19,6 +19,14 @@
 <p>Release Year: ${album.releaseYear}</p>
 <hr>
 
+<h2>Songs</h2>
+<ol>
+<c:forEach items="${album.songs}" var="song">
+<li><p>${song.name} - <i>${song.length}</i> - Genre: ${song.genre}</p></li>
+
+
+</c:forEach>
+</ol>
 <c:choose>
 <c:when test="${album.label != null }">
 <h1>Label Information</h1>
