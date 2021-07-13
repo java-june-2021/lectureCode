@@ -12,35 +12,35 @@
 </head>
 <body>
 <div class="container">
-<h1>Add Song To Album!</h1>
-<hr>
-<form:form method="POST" action="/song/add" modelAttribute="song">
-	<div class="form">
-		<form:label path="album">Album:</form:label>
-		<form:errors path="album"/>
-		<form:select path="album">
-			<c:forEach items="${albums}" var="album">
-				<option value="${album.id}">${album.bandName} - ${album.albumName }</option>
-			</c:forEach>
-		</form:select>
+	<h1>Add Song To Album!</h1>
+	<hr>
+	<form:form method="POST" action="/song/add" modelAttribute="song">
+		<div class="form">
+			<form:label path="album">Album:</form:label>
+			<form:errors path="album"/>
+			<form:select path="album">
+				<c:forEach items="${albums}" var="album">
+					<option value="${album.id}">${album.bandName} - ${album.albumName }</option>
+				</c:forEach>
+			</form:select>
+		</div>
+		<div class="form-group">
+			<form:label path="name">Name:</form:label>
+			<form:errors path="name"/>
+			<form:input path="name"/>
+		</div>
+		<div class="form-group">
+			<form:label path="length">Length:</form:label>
+			<form:errors path="length"/>
+			<form:input path="length"/>
+		</div>
+		<div class="form-group">
+			<form:label path="genre">Genre:</form:label>
+			<form:errors path="genre"/>
+			<form:input path="genre"/>
+		</div>
+		<button>Add Song!</button>
+	</form:form>
 	</div>
-	<div class="form-group">
-		<form:label path="name">Name:</form:label>
-		<form:errors path="name"/>
-		<form:input path="name"/>
-	</div>
-	<div class="form-group">
-		<form:label path="length">Length:</form:label>
-		<form:errors path="length"/>
-		<form:input path="length"/>
-	</div>
-	<div class="form-group">
-		<form:label path="genre">Genre:</form:label>
-		<form:errors path="genre"/>
-		<form:input path="genre"/>
-	</div>
-	<button>Add Song!</button>
-</form:form>
-</div>
 </body>
 </html>

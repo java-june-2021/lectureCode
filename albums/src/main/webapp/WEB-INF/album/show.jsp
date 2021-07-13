@@ -18,7 +18,13 @@
 <p>Album Name: ${album.albumName}</p>
 <p>Release Year: ${album.releaseYear}</p>
 <hr>
-
+<h3>Liked By</h3>
+<ol>
+<c:forEach items="${album.likers}" var="user">
+<li>${user.firstName} ${user.lastName}
+</c:forEach>
+</ol>
+<hr>
 <h2>Songs</h2>
 <ol>
 <c:forEach items="${album.songs}" var="song">

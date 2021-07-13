@@ -2,6 +2,7 @@ package com.matthew.albums.controllers;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.matthew.albums.models.Album;
 import com.matthew.albums.models.Label;
+import com.matthew.albums.models.User;
 import com.matthew.albums.services.AlbumService;
 import com.matthew.albums.services.LabelService;
+import com.matthew.albums.services.UserService;
 
 @Controller
 public class HomeController {
@@ -26,10 +29,56 @@ public class HomeController {
 	private AlbumService aService;
 	@Autowired
 	private LabelService lService;	
+	@Autowired
+	private UserService uService;
 	
 	@GetMapping("/")
 	public String index(Model viewModel) {
+		viewModel.addAttribute("users", this.uService.allUsers());
+		return "index.jsp";
+	}
+	
+	@PostMapping("/login")
+	public String login(@RequestParam("userToLogin") Long userId, HttpSession session) {
+		session.setAttribute("user__id", userId);
+		return "redirect:/albums";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
+	
+	@GetMapping("/like/{id}")
+	public String like(@PathVariable("id") Long id, HttpSession session) {
+		Long UserId = (Long)session.getAttribute("user__id");
+		Long albumId = id;
+		User liker = this.uService.findOneUser(UserId);
+		Album likedAlbum = this.aService.getOneAlbum(albumId);
+		this.aService.addLiker(likedAlbum, liker);
+		return "redirect:/albums";
+	}
+	
+	@GetMapping("/unlike/{id}")
+	public String unlike(@PathVariable("id") Long id, HttpSession session) {
+		Long UserId = (Long)session.getAttribute("user__id");
+		Long albumId = id;
+		User liker = this.uService.findOneUser(UserId);
+		Album likedAlbum = this.aService.getOneAlbum(albumId);
+		this.aService.removeLiker(likedAlbum, liker);
+		return "redirect:/albums";
+	}
+	
+	@GetMapping("/albums")
+	public String dashboard(Model viewModel, HttpSession session) {
+		if((Long)session.getAttribute("user__id") == null){
+			return "redirect:/";
+		}
+		Long thisUser = (Long)session.getAttribute("user__id");
+		viewModel.addAttribute("user", this.uService.findOneUser(thisUser));
 		viewModel.addAttribute("allAlbums", this.aService.allAlbums());
+		this.uService.allUsers();
 		return "/album/index.jsp";
 	}
 	
